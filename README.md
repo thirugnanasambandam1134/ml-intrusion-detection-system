@@ -2,82 +2,93 @@
 
 ## Overview
 
-This project implements a Machine Learning-based Intrusion Detection System (IDS) designed to classify network traffic as either **Normal** or **Malicious (Attack)**. The system is trained using labeled historical network traffic data and is capable of analyzing new incoming traffic to detect potential cyber threats.
+This project implements a **Machine Learning-based Intrusion Detection System (IDS)** designed to classify network traffic as either **Normal** or **Malicious (Attack)**. The system is trained using labeled historical network traffic data and is capable of analyzing new incoming traffic to detect potential cyber threats.
 
-Traditional signature-based detection systems struggle to detect unknown or zero-day attacks. This project demonstrates an anomaly-based detection approach using supervised machine learning techniques to improve adaptability and detection performance.
+Traditional signature-based detection systems rely on predefined attack patterns and are limited in detecting zero-day or evolving threats. This project adopts an anomaly-based detection approach using supervised machine learning techniques to improve adaptability, scalability, and detection accuracy.
 
-The project simulates a simplified Security Operations Center (SOC) workflow by generating alerts and logging detected malicious traffic.
+The system simulates a simplified Security Operations Center (SOC) workflow by generating alerts and logging detected malicious traffic for monitoring and analysis.
+
+---
 
 ## Problem Statement
 
-Traditional intrusion detection systems rely on predefined signatures of known attacks. While effective against recognized threats, they fail when encountering new or evolving attack patterns.
+Traditional intrusion detection systems rely on predefined signatures of known attacks. While effective against recognized threats, they struggle to identify new, sophisticated, or previously unseen attack patterns.
 
-This project addresses that limitation by applying supervised machine learning techniques to learn network behavior patterns and classify traffic based on features extracted from network connections.
+With increasing network complexity and traffic volume, static rule-based systems are insufficient. Intelligent, data-driven approaches are required to model network behavior and detect anomalies dynamically.
 
-The goal is to build a structured, reproducible, and professionally organized ML pipeline for intrusion detection.
+This project addresses this limitation by applying supervised machine learning techniques to learn network behavior patterns and classify traffic based on features extracted from network connections.
+
+The goal is to design and implement a structured, reproducible, and professionally organized machine learning pipeline for intrusion detection.
+
+---
 
 ## Dataset
 
-This project uses the **NSL-KDD dataset**, an improved version of the KDD Cup 1999 dataset.
+This project uses the **NSL-KDD dataset**, an improved and refined version of the KDD Cup 1999 dataset, designed to address redundancy and imbalance issues in the original dataset.
 
-Dataset characteristics:
+### Dataset Characteristics
 
-- 41 network traffic features
-- Labeled records (Normal and multiple attack types)
-- Includes attack categories such as:
-  - Denial of Service (DoS)
-  - Probe
-  - Remote to Local (R2L)
-  - User to Root (U2R)
+- 41 network traffic features  
+- Labeled records (Normal and multiple attack types)  
+- Multiple attack categories including:
+  - Denial of Service (DoS)  
+  - Probe  
+  - Remote to Local (R2L)  
+  - User to Root (U2R)  
 
-Feature types include:
+### Feature Categories
 
-- Basic TCP/IP connection features (duration, protocol type, service, flag)
-- Content-based features (failed logins, root access attempts)
-- Traffic-based features (connection counts, error rates)
-- Host-based features (destination host statistics)
+- Basic TCP/IP connection features (duration, protocol type, service, flag)  
+- Content-based features (failed login attempts, root access attempts)  
+- Traffic-based features (connection count, error rates)  
+- Host-based features (destination host statistics)  
 
-The dataset enables supervised training of classification models for intrusion detection.
+The dataset enables supervised training of classification models for intrusion detection and evaluation using standardized metrics.
+
+---
 
 ## Machine Learning Approach
 
-The project follows a structured ML pipeline:
+The project follows a structured and modular machine learning pipeline:
 
-1. Data Loading  
-   - Import dataset  
-   - Assign feature names  
+### 1. Data Loading
+- Import dataset  
+- Assign feature names  
+- Validate data integrity  
 
-2. Data Preprocessing  
-   - Encode categorical features  
-   - Convert labels to binary (Normal vs Attack)  
-   - Feature scaling (if required)  
+### 2. Data Preprocessing
+- Handle categorical feature encoding  
+- Convert multi-class labels to binary classification (Normal vs Attack)  
+- Feature scaling and normalization (if required)  
 
-3. Model Training  
-   - Apply supervised classification algorithms  
-   - Train using labeled traffic data  
+### 3. Model Training
+- Apply supervised classification algorithms  
+- Train models using labeled network traffic data  
 
-4. Model Evaluation  
-   - Accuracy  
-   - Precision  
-   - Recall  
-   - F1-score  
-   - Confusion matrix  
+### 4. Model Evaluation
+- Accuracy  
+- Precision  
+- Recall  
+- F1-score  
+- Confusion Matrix  
 
-5. Prediction  
-   - Provide fresh network traffic data  
-   - Classify as Normal or Attack  
+### 5. Prediction
+- Provide new network traffic input  
+- Classify as Normal or Attack  
 
-6. Logging  
-   - Generate simulated SOC alerts  
-   - Store detection logs in the logs directory  
+### 6. Logging & Alert Simulation
+- Generate SOC-style alerts for detected attacks  
+- Store detection logs in the `logs/` directory  
 
-7. Model Saving  
-   - Save trained model using joblib  
-   - Enable reuse without retraining  
+### 7. Model Persistence
+- Save trained model using `joblib`  
+- Enable reuse without retraining  
 
+---
 
 ## Project Structure
 
+```
 ml-intrusion-detection-system/
 ├── data/
 │   ├── raw/                         # Original dataset files (NSL-KDD)
@@ -109,6 +120,9 @@ ml-intrusion-detection-system/
 ├── .gitignore                       # Ignored files & folders
 ├── LICENSE                          # MIT License
 └── README.md                        # Project documentation
+```
+
+---
 
 ## Technologies Used
 
@@ -119,4 +133,42 @@ ml-intrusion-detection-system/
 - Matplotlib  
 - Joblib  
 - Git & GitHub  
-- VS Code  
+- Visual Studio Code  
+
+---
+
+## Installation
+
+```bash
+git clone https://github.com/thirugnanasambandam1134/ml-intrusion-detection-system.git
+cd ml-intrusion-detection-system
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+---
+
+## Usage
+
+To train and run the intrusion detection system:
+
+```bash
+python main.py
+```
+
+---
+
+## Future Improvements
+
+- Real-time traffic monitoring integration  
+- Deep Learning models (LSTM / ANN)  
+- REST API deployment using Flask or FastAPI  
+- SIEM integration  
+- Dashboard visualization for alert monitoring  
+
+---
+
+## License
+
+This project is licensed under the MIT License.
