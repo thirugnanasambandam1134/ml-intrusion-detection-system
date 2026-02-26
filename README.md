@@ -24,26 +24,68 @@ The goal is to design and implement a structured, reproducible, and professional
 
 ## Dataset
 
-This project uses the **NSL-KDD dataset**, an improved and refined version of the KDD Cup 1999 dataset, designed to address redundancy and imbalance issues in the original dataset.
+This project uses the CIC-IDS 2017 dataset developed by the Canadian Institute for Cybersecurity (CIC), University of New Brunswick.
 
-### Dataset Characteristics
+### About the Dataset
 
-- 41 network traffic features  
-- Labeled records (Normal and multiple attack types)  
-- Multiple attack categories including:
-  - Denial of Service (DoS)  
-  - Probe  
-  - Remote to Local (R2L)  
-  - User to Root (U2R)  
+The CIC-IDS 2017 dataset contains up-to-date and realistic network traffic data along with labeled attack scenarios. It was generated using a realistic network topology and includes both benign and malicious traffic.
 
-### Feature Categories
+The dataset was created to evaluate intrusion detection systems (IDS) and machine learning-based security models.
 
-- Basic TCP/IP connection features (duration, protocol type, service, flag)  
-- Content-based features (failed login attempts, root access attempts)  
-- Traffic-based features (connection count, error rates)  
-- Host-based features (destination host statistics)  
+### File Used in This Project
 
-The dataset enables supervised training of classification models for intrusion detection and evaluation using standardized metrics.
+For this project, the following file is used:
+
+- Thursday-WorkingHours-Morning-WebAttacks.pcap_ISCX.csv
+
+This file contains web-based attack traffic mixed with normal network traffic.
+
+### Attack Types Included
+
+The selected dataset file includes the following attack categories:
+
+- Web Attack – Brute Force
+- Web Attack – XSS
+- Web Attack – SQL Injection
+- Benign (normal traffic)
+
+### Features
+
+The dataset contains more than 80 network flow features extracted using CICFlowMeter, including:
+
+- Flow Duration
+- Total Forward Packets
+- Total Backward Packets
+- Total Length of Forward Packets
+- Total Length of Backward Packets
+- Flow Bytes/s
+- Flow Packets/s
+- Packet Length Statistics
+- Header Length
+- Flags (SYN, ACK, FIN, etc.)
+- Average Packet Size
+- Active and Idle Time Metrics
+- Label (Target Variable)
+
+These features describe traffic behavior and are used for training machine learning models to classify malicious and benign traffic.
+
+### Dataset Structure
+
+The dataset is stored in CSV format.
+
+The file should be placed inside:
+
+data/raw/
+
+Final directory structure:
+
+intrusion-detection-system/
+ └── data/
+     └── raw/
+         └── Thursday-WorkingHours-Morning-WebAttacks.pcap_ISCX.csv
+
+Note: The dataset is not included in this repository due to its large size.
+Users must download it manually from the official source.
 
 ---
 
